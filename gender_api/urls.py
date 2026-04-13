@@ -16,8 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import JsonResponse
+import requests
+
+
+def home(request):
+    return JsonResponse({
+        "status": "success",
+        "message": "Gender API is running"
+    })
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
+    path("", home),
+   
+    
 ]
